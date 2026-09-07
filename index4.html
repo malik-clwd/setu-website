@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StartupSETU | Digital Startup Empowerment</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style3.css">
+</head>
+<body>
+
+<div class="app">
+
+    <!-- ================= SIDEBAR ================= -->
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="logo">S</div>
+            <div>
+                <h2>StartupSETU</h2>
+                <span>Powering Innovation</span>
+            </div>
+        </div>
+
+        <nav class="navigation">
+            <button class="nav-item active" data-section="dashboard" onclick="showSection('dashboard')">🏠<span>Dashboard</span></button>
+            <button class="nav-item" data-section="schemes" onclick="showSection('schemes')">📋<span>Startup Schemes</span></button>
+            <button class="nav-item" data-section="services" onclick="showSection('services')">🛠️<span>Services</span></button>
+            <button class="nav-item" data-section="ecosystem" onclick="showSection('ecosystem')">🏛️<span>Ecosystem</span></button>
+            <button class="nav-item" data-section="applications" onclick="showSection('applications')">📄<span>My Applications</span></button>
+            <button class="nav-item" data-section="notifications" onclick="showSection('notifications')">
+                🔔<span>Notifications</span>
+                <b class="nav-badge" id="navNotificationCount">3</b>
+            </button>
+            <button class="nav-item" data-section="grievance" onclick="showSection('grievance')">⚠️<span>Grievances</span></button>
+            <button class="nav-item" data-section="analytics" onclick="showSection('analytics')">📊<span>Reports &amp; Analytics</span></button>
+            <button class="nav-item" data-section="profile" onclick="showSection('profile')">👤<span>Profile</span></button>
+            <button class="nav-item" data-section="settings" onclick="showSection('settings')">⚙️<span>Settings</span></button>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <h3>StartupSETU</h3>
+            <p>One digital bridge for startups, schemes, funding and government support.</p>
+            <div class="india-wave">🇮🇳</div>
+        </div>
+
+    </aside>
+
+    <!-- ================= MAIN ================= -->
+    <main class="main">
+
+        <header class="topbar">
+            <div class="search-box">
+                <span>🔍</span>
+                <input type="text" id="searchInput" placeholder="Search startups, schemes, funding..." autocomplete="off">
+                <button class="clear-search" id="clearSearch" onclick="clearSearch()" title="Clear search">×</button>
+            </div>
+
+            <div class="top-actions">
+                <button class="language" onclick="toggleLanguage()">🌐 <span id="languageText">EN</span> ▾</button>
+
+                <button class="notification" onclick="showSection('notifications')">
+                    🔔
+                    <b id="topNotificationCount">3</b>
+                </button>
+
+                <button class="user" onclick="showSection('profile')">
+                    <div class="avatar" id="topAvatar">L</div>
+                    <div>
+                        <strong id="topUserName">Hi, Lucifer</strong>
+                        <small>Startup User ▾</small>
+                    </div>
+                </button>
+            </div>
+        </header>
+
+        <div class="global-search-results" id="globalSearchResults">
+            <div class="search-result-header">
+                <strong id="searchResultTitle">Search Results</strong>
+                <button onclick="clearSearch()">Clear</button>
+            </div>
+            <div id="searchResultList"></div>
+        </div>
+
+        <!-- ================= DASHBOARD ================= -->
+        <section id="dashboard" class="page active-page">
+
+            <div class="hero">
+                <div class="hero-content">
+                    <h1>Good governance,<br><span class="orange">startup</span> <span class="green">empowerment</span></h1>
+                    <p id="heroGreeting">Discover the right government schemes, funding opportunities and startup services — all through one intelligent digital bridge.</p>
+                    <button class="primary-btn" onclick="openModal('discover')">Discover Opportunities</button>
+                </div>
+
+                <div class="quick-actions">
+                    <h3>Quick actions</h3>
+                    <button onclick="openModal('register')">🚀<span>Register your startup</span></button>
+                    <button onclick="openModal('track')">🔎<span>Track application</span></button>
+                    <button onclick="openModal('funding')">💰<span>Find funding</span></button>
+                    <button onclick="showSection('grievance')">⚠️<span>Lodge grievance</span></button>
+                </div>
+            </div>
+
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-icon orange-icon">📋</div>
+                    <div><p>Verified schemes</p><h2>512</h2><small>+12 this month</small></div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon blue-icon">📄</div>
+                    <div><p>Active applications</p><h2 id="statActiveApps">28</h2><small>In progress</small></div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon green-icon">✓</div>
+                    <div><p>Benefits approved</p><h2>15</h2><small>This month</small></div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon purple-icon">👥</div>
+                    <div><p>Startups connected</p><h2>2.45 Cr+</h2><small>Across India</small></div>
+                </div>
+            </div>
+
+            <div class="content-grid">
+                <div class="panel">
+                    <div class="panel-header">
+                        <h2>Popular startup opportunities</h2>
+                        <button onclick="showSection('schemes')">View all</button>
+                    </div>
+
+                    <div class="scheme-grid">
+                        <div class="scheme-card" data-search="Startup India Seed Fund Funding early stage seed funding">
+                            <div class="scheme-icon orange-icon">🚀</div>
+                            <div>
+                                <h3>Startup India Seed Fund</h3>
+                                <p>Early-stage funding support for innovative startups.</p>
+                                <span class="badge">Funding</span>
+                            </div>
+                        </div>
+
+                        <div class="scheme-card" data-search="DPIIT Recognition recognition startup">
+                            <div class="scheme-icon blue-icon">🏆</div>
+                            <div>
+                                <h3>DPIIT Recognition</h3>
+                                <p>Recognition and access to startup ecosystem benefits.</p>
+                                <span class="badge">Recognition</span>
+                            </div>
+                        </div>
+
+                        <div class="scheme-card" data-search="Credit Guarantee Scheme finance loan">
+                            <div class="scheme-icon green-icon">💳</div>
+                            <div>
+                                <h3>Credit Guarantee Scheme</h3>
+                                <p>Support for startup loans and credit access.</p>
+                                <span class="badge">Finance</span>
+                            </div>
+                        </div>
+
+                        <div class="scheme-card" data-search="Women Innovation Support women innovation">
+                            <div class="scheme-icon purple-icon">👩‍💻</div>
+                            <div>
+                                <h3>Women Innovation Support</h3>
+                                <p>Programs supporting women-led innovation.</p>
+                                <span class="badge">Innovation</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <div class="panel-header">
+                        <h2>Recent updates</h2>
+                        <button onclick="showSection('notifications')">View all</button>
+                    </div>
+
+                    <div class="updates">
+                        <div class="update">
+                            <div class="update-icon">🚀</div>
+                            <div><strong>New opportunity matched</strong><p>Seed funding program matches your startup profile.</p><small>2 hours ago</small></div>
+                        </div>
+                        <div class="update">
+                            <div class="update-icon">✓</div>
+                            <div><strong>Application status updated</strong><p>Your DPIIT application is under review.</p><small>5 hours ago</small></div>
+                        </div>
+                        <div class="update">
+                            <div class="update-icon">ℹ️</div>
+                            <div><strong>Important advisory</strong><p>Keep your startup documents verified.</p><small>1 day ago</small></div>
+                        </div>
+                        <div class="update">
+                            <div class="update-icon">⚙️</div>
+                            <div><strong>Platform maintenance</strong><p>Scheduled maintenance on Sunday.</p><small>2 days ago</small></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="features">
+                <div>🛡️<section><strong>Secure platform</strong><small>Protected startup data</small></section></div>
+                <div>🤝<section><strong>24x7 support</strong><small>We're here to help</small></section></div>
+                <div>🏛️<section><strong>Trusted ecosystem</strong><small>Government &amp; partners</small></section></div>
+                <div>⚡<section><strong>Easy access</strong><small>Anytime, anywhere</small></section></div>
+            </div>
+
+        </section>
+
+        <!-- ================= SCHEMES ================= -->
+        <section id="schemes" class="page">
+            <div class="page-title"><h1>Startup Schemes</h1><p>Find government schemes suitable for your startup.</p></div>
+
+            <div class="large-card">
+                <h2>Find the right scheme</h2>
+
+                <div class="filters">
+                    <select id="categoryFilter">
+                        <option value="All Categories">All Categories</option>
+                        <option value="Funding">Funding</option>
+                        <option value="Tax Benefits">Tax Benefits</option>
+                        <option value="Recognition">Recognition</option>
+                        <option value="Incubation">Incubation</option>
+                        <option value="Finance">Finance</option>
+                    </select>
+
+                    <select id="stageFilter">
+                        <option value="All Startup Stages">All Startup Stages</option>
+                        <option value="Idea">Idea</option>
+                        <option value="MVP">MVP</option>
+                        <option value="Early Stage">Early Stage</option>
+                        <option value="Growth">Growth</option>
+                    </select>
+
+                    <button class="primary-btn" onclick="filterSchemes()">Find schemes</button>
+                    <button class="secondary-btn" onclick="resetFilters()">Reset</button>
+                </div>
+
+                <div class="all-schemes" id="allSchemes">
+
+                    <div class="opportunity" data-category="Funding" data-stage="Early Stage" data-search="Startup India Seed Fund funding seed early stage">
+                        <h3>Startup India Seed Fund</h3>
+                        <p>Funding for proof of concept, prototype development and market entry.</p>
+                        <span>Funding</span>
+                        <button onclick="viewScheme('Startup India Seed Fund')">View details</button>
+                    </div>
+
+                    <div class="opportunity" data-category="Recognition" data-stage="All" data-search="DPIIT Startup Recognition recognition">
+                        <h3>DPIIT Startup Recognition</h3>
+                        <p>Government recognition and ecosystem benefits for eligible startups.</p>
+                        <span>Recognition</span>
+                        <button onclick="viewScheme('DPIIT Startup Recognition')">View details</button>
+                    </div>
+
+                    <div class="opportunity" data-category="Finance" data-stage="Growth" data-search="Credit Guarantee Scheme finance credit loan">
+                        <h3>Credit Guarantee Scheme</h3>
+                        <p>Improved access to institutional credit for eligible startups.</p>
+                        <span>Finance</span>
+                        <button onclick="viewScheme('Credit Guarantee Scheme')">View details</button>
+                    </div>
+
+                    <div class="opportunity" data-category="Incubation" data-stage="Idea" data-search="Startup Incubation incubator idea">
+                        <h3>Startup Incubation Support</h3>
+                        <p>Support for early ideas through incubators and mentorship.</p>
+                        <span>Incubation</span>
+                        <button onclick="viewScheme('Startup Incubation Support')">View details</button>
+                    </div>
+
+                    <div class="opportunity" data-category="Tax Benefits" data-stage="Growth" data-search="Tax Benefits startup tax">
+                        <h3>Startup Tax Benefits</h3>
+                        <p>Explore eligible tax-related support for startups.</p>
+                        <span>Tax Benefits</span>
+                        <button onclick="viewScheme('Startup Tax Benefits')">View details</button>
+                    </div>
+
+                </div>
+                <p class="empty-state" id="schemesEmptyState" hidden>No schemes match your filters. Try resetting them.</p>
+            </div>
+        </section>
+
+        <!-- ================= SERVICES ================= -->
+        <section id="services" class="page">
+            <div class="page-title"><h1>Startup Services</h1><p>Everything a startup needs in one place.</p></div>
+
+            <div class="service-grid">
+                <div class="service-card" data-search="startup registration company registration">
+                    🚀<h3>Startup Registration</h3><p>Get guidance for startup registration.</p>
+                    <button onclick="openService('Startup Registration')">Explore</button>
+                </div>
+                <div class="service-card" data-search="funding discovery investment finance">
+                    💰<h3>Funding Discovery</h3><p>Discover relevant funding opportunities.</p>
+                    <button onclick="openService('Funding Discovery')">Explore</button>
+                </div>
+                <div class="service-card" data-search="document assistance verification documents">
+                    📄<h3>Document Assistance</h3><p>Manage and verify startup documents.</p>
+                    <button onclick="openService('Document Assistance')">Explore</button>
+                </div>
+                <div class="service-card" data-search="mentorship mentor startup">
+                    🤝<h3>Mentorship</h3><p>Connect with mentors and ecosystem partners.</p>
+                    <button onclick="openService('Mentorship')">Explore</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= ECOSYSTEM ================= -->
+        <section id="ecosystem" class="page">
+            <div class="page-title"><h1>Startup Ecosystem</h1><p>Connect with the right people and organizations.</p></div>
+
+            <div class="ecosystem-grid">
+                <div class="ecosystem-card" data-search="government departments programs">
+                    🏛️<h3>Government</h3><p>Departments and government programs.</p>
+                    <button onclick="openService('Government')">Explore</button>
+                </div>
+                <div class="ecosystem-card" data-search="incubators incubation acceleration">
+                    🏢<h3>Incubators</h3><p>Find incubation and acceleration support.</p>
+                    <button onclick="openService('Incubators')">Explore</button>
+                </div>
+                <div class="ecosystem-card" data-search="investors investment funding">
+                    💼<h3>Investors</h3><p>Explore investment opportunities.</p>
+                    <button onclick="openService('Investors')">Explore</button>
+                </div>
+                <div class="ecosystem-card" data-search="mentors mentorship expert guidance">
+                    👨‍🏫<h3>Mentors</h3><p>Get expert guidance for your startup.</p>
+                    <button onclick="openService('Mentors')">Explore</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= APPLICATIONS ================= -->
+        <section id="applications" class="page">
+            <div class="page-title"><h1>My Applications</h1><p>Track all your startup applications.</p></div>
+
+            <div class="table-card">
+                <div class="table-tools">
+                    <input type="text" id="applicationSearch" placeholder="Search application..." oninput="searchApplications()">
+                    <button class="secondary-btn" onclick="resetApplicationSearch()">Reset</button>
+                </div>
+
+                <table>
+                    <thead>
+                        <tr><th>Application ID</th><th>Scheme</th><th>Date</th><th>Status</th><th>Action</th></tr>
+                    </thead>
+                    <tbody id="applicationTable">
+                        <tr>
+                            <td>SS-2026-00125</td><td>DPIIT Recognition</td><td>02 Sep 2026</td>
+                            <td><span class="status review">Under Review</span></td>
+                            <td><button class="table-btn" onclick="trackApplication('SS-2026-00125')">Track</button></td>
+                        </tr>
+                        <tr>
+                            <td>SS-2026-00091</td><td>Seed Fund</td><td>28 Aug 2026</td>
+                            <td><span class="status approved">Approved</span></td>
+                            <td><button class="table-btn" onclick="trackApplication('SS-2026-00091')">Track</button></td>
+                        </tr>
+                        <tr>
+                            <td>SS-2026-00072</td><td>Credit Guarantee</td><td>25 Aug 2026</td>
+                            <td><span class="status pending">Documents Required</span></td>
+                            <td><button class="table-btn" onclick="trackApplication('SS-2026-00072')">Track</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="empty-state" id="applicationsEmptyState" hidden>No applications match your search.</p>
+            </div>
+        </section>
+
+        <!-- ================= NOTIFICATIONS ================= -->
+        <section id="notifications" class="page">
+            <div class="page-title"><h1>Notifications</h1><p>Your latest StartupSETU updates.</p></div>
+
+            <div class="notification-controls">
+                <button class="secondary-btn" onclick="markAllNotificationsRead()">Mark all read</button>
+            </div>
+
+            <div class="notification-list" id="notificationList">
+                <div class="notification-card unread" data-notification="funding matched">
+                    <div class="notification-symbol">🚀</div>
+                    <div><strong>New funding opportunity matched</strong><p>A funding scheme has been matched with your profile.</p><small>2 hours ago</small></div>
+                    <button onclick="markNotificationRead(this)">✓</button>
+                </div>
+                <div class="notification-card unread" data-notification="application status">
+                    <div class="notification-symbol">✓</div>
+                    <div><strong>Application status updated</strong><p>Your DPIIT application is under review.</p><small>5 hours ago</small></div>
+                    <button onclick="markNotificationRead(this)">✓</button>
+                </div>
+                <div class="notification-card unread" data-notification="document reminder">
+                    <div class="notification-symbol">⚠️</div>
+                    <div><strong>Document reminder</strong><p>Please verify your startup documents.</p><small>1 day ago</small></div>
+                    <button onclick="markNotificationRead(this)">✓</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= GRIEVANCE ================= -->
+        <section id="grievance" class="page">
+            <div class="page-title"><h1>Lodge Grievance</h1><p>Submit and track your startup-related grievance.</p></div>
+
+            <div class="form-card">
+                <form id="grievanceForm" onsubmit="submitGrievance(event)">
+                    <label for="grievanceSubject">Subject</label>
+                    <input type="text" id="grievanceSubject" required>
+
+                    <label for="applicationId">Application ID (optional)</label>
+                    <input type="text" id="applicationId" placeholder="e.g. SS-2026-00125">
+
+                    <label for="grievanceDescription">Description</label>
+                    <textarea id="grievanceDescription" required></textarea>
+
+                    <button class="primary-btn" type="submit">Submit grievance</button>
+                </form>
+            </div>
+
+            <div id="grievanceHistory" class="history-card" style="display:none;">
+                <h3>Submitted grievances</h3>
+                <div id="grievanceList"></div>
+            </div>
+        </section>
+
+        <!-- ================= ANALYTICS ================= -->
+        <section id="analytics" class="page">
+            <div class="page-title"><h1>Reports &amp; Analytics</h1><p>StartupSETU platform overview.</p></div>
+
+            <div class="analytics-grid">
+                <div><h3>Applications</h3><strong>28</strong><p>Active applications</p></div>
+                <div><h3>Approved</h3><strong>15</strong><p>Benefits approved</p></div>
+                <div><h3>Completion</h3><strong>54%</strong><p>Average completion rate</p></div>
+            </div>
+
+            <div class="analytics-panel">
+                <h2>Application overview</h2>
+
+                <div class="progress-item">
+                    <span>Approved</span>
+                    <div class="progress"><div style="width:54%"></div></div>
+                    <b>54%</b>
+                </div>
+                <div class="progress-item">
+                    <span>Under Review</span>
+                    <div class="progress"><div style="width:31%"></div></div>
+                    <b>31%</b>
+                </div>
+                <div class="progress-item">
+                    <span>Pending Documents</span>
+                    <div class="progress"><div style="width:15%"></div></div>
+                    <b>15%</b>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PROFILE ================= -->
+        <section id="profile" class="page">
+            <div class="page-title"><h1>Founder Profile</h1><p>Complete your startup profile for better scheme matching.</p></div>
+
+            <div class="form-card">
+                <form id="profileForm" onsubmit="event.preventDefault(); saveProfile();">
+                    <label for="founderName">Founder name</label>
+                    <input type="text" id="founderName" required>
+
+                    <label for="startupName">Startup name</label>
+                    <input type="text" id="startupName" placeholder="Enter startup name">
+
+                    <label for="industry">Industry</label>
+                    <select id="industry">
+                        <option>Technology</option>
+                        <option>Agriculture</option>
+                        <option>Healthcare</option>
+                        <option>FinTech</option>
+                        <option>CleanTech</option>
+                    </select>
+
+                    <button type="submit" class="primary-btn">Save profile</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- ================= SETTINGS ================= -->
+        <section id="settings" class="page">
+            <div class="page-title"><h1>Settings</h1><p>Manage your StartupSETU preferences.</p></div>
+
+            <div class="settings-card">
+                <label><input type="checkbox" id="emailNotifications" checked> Email notifications</label>
+                <label><input type="checkbox" id="schemeRecommendations" checked> Scheme recommendations</label>
+                <label><input type="checkbox" id="smsNotifications"> SMS notifications</label>
+                <button class="primary-btn" onclick="saveSettings()">Save settings</button>
+            </div>
+        </section>
+
+    </main>
+</div>
+
+<!-- ================= MODAL ================= -->
+<div class="modal" id="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 id="modalTitle">StartupSETU</h2>
+            <button onclick="closeModal()">×</button>
+        </div>
+        <div id="modalBody"></div>
+    </div>
+</div>
+
+<div class="toast" id="toast"><span id="toastMessage"></span></div>
+
+<script src="script4.js"></script>
+</body>
+</html>
